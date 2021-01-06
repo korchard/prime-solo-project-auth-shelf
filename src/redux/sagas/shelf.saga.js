@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {put, takeLatest } from 'redux-saga/effects';
 
-
+// GET ROUTE
 function* fetchShelf() {
     try {
       const config = {
@@ -16,9 +16,25 @@ function* fetchShelf() {
       console.log('Shelf get request failed', error);
     }
   }
+
+  // POST ROUTE
+  function* addItem (action) {
+    try {
+      const config = {
+        headers: { 'Content-Type': 'application/json' },
+        withCredentials: true,
+      };
+  
+      yield axios.post('api/shelf', action.payload, config);
+      yield put({ type: 'FETCH_SHELF' });
+    } catch (error) {
+      console.log('Shelf post request failed', error);
+    }
+  }
   
   function* shelfSaga() {
     yield takeLatest('FETCH_SHELF', fetchShelf);
+    yield takeLatest('ADD_ITEM', addItem);
   }
   
   export default shelfSaga;

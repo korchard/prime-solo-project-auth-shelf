@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
-
+import AddItemForm from '../AddItemForm/AddItemForm'
+import InfoPageItem from '../InfoPageItem/InfoPageItem'
 
 // This is one of our simplest components
 // It doesn't have local state, so it can be a function component.
@@ -25,14 +26,21 @@ class InfoPage extends React.Component {
     return (
       <div>
         <p>Info Page</p>
-        {/* <p>JSON:</p>{JSON.stringify(this.props.store.shelf)} */}
-        <tbody>
-            {this.props.store.shelf.map((item) => {
-                return (
-                    <tr key={item.id}><td>{item.description}</td><td>{item.image_url}</td><td>{item.user_id}</td></tr>
-                );
-            })} 
-        </tbody>
+        {/* <p>JSON:</p>{JSON.stringify(this.props.store.user)} */}
+        <AddItemForm/>
+        <table>
+          <thead>
+            <tr><th>Description</th><th>Picture</th><th>User ID</th><th></th></tr>
+          </thead>
+          <tbody>
+              {this.props.store.shelf.map((item) => {
+                  return (
+                      <InfoPageItem key= {item.id} item={item}/>
+                  );
+              })} 
+          </tbody>
+
+        </table>
 
       </div>
     )

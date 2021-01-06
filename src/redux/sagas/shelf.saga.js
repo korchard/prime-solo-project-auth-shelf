@@ -39,7 +39,7 @@ function* fetchShelf() {
         headers: { 'Content-Type': 'application/json' },
         withCredentials: true,
       };
-  
+    
       yield axios.post(`api/shelf/${action.payload.id}`, action.payload, config);
       yield put({ type: 'FETCH_SHELF' });
     } catch (error) {

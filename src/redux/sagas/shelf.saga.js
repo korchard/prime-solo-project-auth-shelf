@@ -40,7 +40,13 @@ function* fetchShelf() {
         withCredentials: true,
       };
     
-      yield axios.post(`api/shelf/${action.payload.id}`, action.payload, config);
+      yield axios.delete(`api/shelf`, {
+        params: {
+          itemId: action.payload.itemId,
+          userId: action.payload.userId
+        }
+      }, config);
+
       yield put({ type: 'FETCH_SHELF' });
     } catch (error) {
       console.log('Shelf delete request failed', error);

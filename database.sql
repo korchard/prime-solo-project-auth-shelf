@@ -13,4 +13,4 @@ CREATE TABLE "item" (
     "description" VARCHAR (80) NOT NULL,
     "image_url" VARCHAR (2083),
     "user_id" INT REFERENCES "user"
-);
+); 

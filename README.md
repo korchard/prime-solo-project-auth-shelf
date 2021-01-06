@@ -15,7 +15,7 @@ Our client, Prime Digital Academy: Room 2, has asked for an app to simulate the 
 
 Create a new database called `auth_shelf` and create a `user` table:
 user-update
-
+ 
 ```SQL
 CREATE TABLE "user" (
     "id" SERIAL PRIMARY KEY,

@@ -8,7 +8,7 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 // component.
 class AddItemForm extends Component {
   state = {
-    heading: 'Class Component', 
+    heading: 'Add Item', 
     newItem: { 
       description: '', 
       image_url: ''

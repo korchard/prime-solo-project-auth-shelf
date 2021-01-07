@@ -45,7 +45,7 @@ router.delete('/', rejectUnauthenticated, (req, res) => {
   console.log('req.user', req.user.id);
   if (userId === req.user.id) { 
     const queryText = 'DELETE FROM item WHERE id=$1';
-    pool.query(queryText, [req.params.id])
+    pool.query(queryText, [req.query.itemId])
       .then(() => { res.sendStatus(200); })
       .catch((err) => {
         console.log('Error completing DELETE query', err);

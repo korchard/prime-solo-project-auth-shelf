@@ -8,8 +8,22 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
  */
 router.get('/', (req, res) => {
   console.log('req.user', req.user);
-  const queryText = `SELECT * FROM ITEM ORDER BY "user_id" ASC`
+  const queryText = `SELECT * FROM item ORDER BY "user_id" ASC`
   pool.query(queryText)
+  .then((results) => {
+    res.send(results.rows);
+  }).catch((error) => {
+    console.log('Error in shelt.router.js GET route', error);
+    res.sendStatus(500);
+  })
+});
+
+/**
+ * Get all of the items from one user on the shelf
+ */
+router.get('/:id', (req, res) => {
+  const queryText = `SELECT * FROM item WHERE user_id = $1 ORDER BY "user_id" ASC`
+  pool.query(queryText, [req.params.id])
   .then((results) => {
     res.send(results.rows);
   }).catch((error) => {

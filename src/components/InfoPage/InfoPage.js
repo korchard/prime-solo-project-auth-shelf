@@ -30,7 +30,7 @@ class InfoPage extends React.Component {
         {this.props.store.user.id && <AddItemForm/>}
         <table>
           <thead>
-            <tr><th>Description</th><th>Picture</th><th>User ID</th><th></th></tr>
+            <tr><th>Description</th><th>Picture</th><th>Comment</th><th>User ID</th><th></th></tr>
           </thead>
           <tbody>
               {this.props.store.shelf.map((item) => {

@@ -52,11 +52,28 @@ function* fetchShelf() {
       console.log('Shelf delete request failed', error);
     }
   }
+
+  // PUT ROUTE
+  function* editItem (action) {
+    console.log('editItem', action.payload);
+    try {
+      const config = {
+        headers: { 'Content-Type': 'application/json' },
+        withCredentials: true,
+      };
+    
+      yield axios.put(`api/shelf/${action.payload.id}`, action.payload, config);
+      yield put({ type: 'FETCH_SHELF' });
+    } catch (error) {
+      console.log('Shelf put request failed', error);
+    }
+  }
   
   function* shelfSaga() {
     yield takeLatest('FETCH_SHELF', fetchShelf);
     yield takeLatest('ADD_ITEM', addItem);
     yield takeLatest('DELETE_ITEM', deleteItem);
+    yield takeLatest('EDIT_ITEM', editItem);
   }
   
   export default shelfSaga;

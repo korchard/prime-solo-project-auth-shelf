@@ -10,7 +10,8 @@ class InfoPageItem extends React.Component {
     editItem: {
       description: '', 
       image_url: '',
-      comment: ''
+      comment: '',
+      id: ''
     }
   }
 
@@ -24,7 +25,8 @@ class InfoPageItem extends React.Component {
       editItem: {
         description: this.props.item.description,
         image_url: this.props.item.image_url,
-        comment: this.props.item.comment
+        comment: this.props.item.comment,
+        id: this.props.item.id
       }
     })
     
@@ -32,6 +34,7 @@ class InfoPageItem extends React.Component {
   }
 
   saveItem = () => {
+    this.props.dispatch({ type: 'EDIT_ITEM', payload: this.state.editItem })
     this.setState ({
       recordEdit: false
     })

@@ -27,7 +27,7 @@ class InfoPage extends React.Component {
       <div>
         <p>Info Page</p>
         {/* <p>JSON:</p>{JSON.stringify(this.props.store.user)} */}
-        <AddItemForm/>
+        {this.props.store.user.id && <AddItemForm/>}
         <table>
           <thead>
             <tr><th>Description</th><th>Picture</th><th>User ID</th><th></th></tr>

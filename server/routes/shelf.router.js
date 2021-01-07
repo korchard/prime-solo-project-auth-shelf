@@ -81,7 +81,7 @@ router.put('/:id', rejectUnauthenticated, (req, res) => {
   pool.query(queryText, [req.params.id, req.body.description, req.body.comment, req.body.image_url])
   .then(() => res.sendStatus(201))
   .catch((error) => { 
-    console.log('Bad news bears error in server POST route ---->', error)
+    console.log('Bad news bears error in server PUT route ---->', error)
     res.sendStatus(501)
   });
 });

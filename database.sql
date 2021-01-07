@@ -11,7 +11,7 @@ CREATE TABLE "user" (
 CREATE TABLE "item" (
     "id" SERIAL PRIMARY KEY,
     "description" VARCHAR (80) NOT NULL,
-    "comment" TEXT DEFAULT 'No comment added.'
+    "comment" TEXT DEFAULT 'No comment added.',
     "image_url" VARCHAR (2083),
     "user_id" INT REFERENCES "user"
 ); 

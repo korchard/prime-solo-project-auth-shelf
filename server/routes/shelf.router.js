@@ -35,7 +35,7 @@ router.get('/:id', (req, res) => {
 /**
  * Add an item for the logged in user to the shelf
  */
-router.post('/', (req, res) => {
+router.post('/', rejectUnauthenticated, (req, res) => {
   // code here
   console.log('body', req.body);
   console.log('user', req.user);
@@ -74,8 +74,16 @@ router.delete('/', rejectUnauthenticated, (req, res) => {
 /**
  * Update an item if it's something the logged in user added
  */
-router.put('/:id', (req, res) => {
-  // PUT route code here
+router.put('/:id', rejectUnauthenticated, (req, res) => {
+  console.log('body', req.body);
+  console.log('user', req.user);
+  let queryText = `UPDATE "item" SET "description" = $2, "comment" = $3, "image_url" = $4 WHERE id = $1;`
+  pool.query(queryText, [req.params.id, req.body.description, req.body.comment, req.body.image_url])
+  .then(() => res.sendStatus(201))
+  .catch((error) => { 
+    console.log('Bad news bears error in server POST route ---->', error)
+    res.sendStatus(501)
+  });
 });
 
 /**

@@ -11,13 +11,12 @@ CREATE TABLE "user" (
 CREATE TABLE "item" (
     "id" SERIAL PRIMARY KEY,
     "description" VARCHAR (80) NOT NULL,
-    "comment" TEXT,
+    "comment" TEXT DEFAULT 'No comment added.'
     "image_url" VARCHAR (2083),
     "user_id" INT REFERENCES "user"
 ); 
 
 SELECT * from item;
-
 
 INSERT INTO "item" ("description", "comment", "image_url", "user_id") VALUES 
 ('Orange Cat','Comment1' ,'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTft4oqHlvJCS7pPRiIcMBk2yybQSsdqc4aGaNVn7tpQ8YOLeXqsZa8GvZaQJF1Moco7CSl-vk&usqp=CAc', 1), 

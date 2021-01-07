@@ -11,7 +11,8 @@ class AddItemForm extends Component {
     heading: 'Add Item', 
     newItem: { 
       description: '', 
-      image_url: ''
+      image_url: '',
+      comment: ''
     }
   };
 
@@ -40,6 +41,7 @@ class AddItemForm extends Component {
         <h2>{this.state.heading}</h2>
         <label>Description</label><input onChange={event => this.handleChange(event, 'description')}></input>
         <label>Image url</label><input onChange={event => this.handleChange(event, 'image_url')}></input>
+        <label>Comment</label><input onChange={event => this.handleChange(event, 'comment')}></input>
         <button onClick={this.submitItem}>Add Item</button>
       </div>
     );

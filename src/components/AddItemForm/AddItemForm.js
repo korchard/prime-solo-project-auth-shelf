@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import ImageUploadForm from '../ImageUploadForm/ImageUploadForm'
 
 // Basic class component structure for React with default state
 // value setup. When making a new component be sure to replace
@@ -38,10 +39,12 @@ class AddItemForm extends Component {
     console.log(this.state.newItem)
     return (
       <div>
+        {JSON.stringify(this.props.store.image)}
         <h2>{this.state.heading}</h2>
         <label>Description</label><input onChange={event => this.handleChange(event, 'description')}></input>
         <label>Image url</label><input onChange={event => this.handleChange(event, 'image_url')}></input>
         <label>Comment</label><input onChange={event => this.handleChange(event, 'comment')}></input>
+        <ImageUploadForm />
         <button onClick={this.submitItem}>Add Item</button>
       </div>
     );

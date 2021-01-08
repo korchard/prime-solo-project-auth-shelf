@@ -3,7 +3,7 @@
 ![TOP_LANGUAGE](https://img.shields.io/github/languages/top/MalikElate/koala-holla-jens.svg?style=flat-square)
 ![FORKS](https://img.shields.io/github/forks/MalikElate/koala-holla-jens.svg?style=social)
 
-# Koala Holla
+# Auth-Shelf Group Project
 
 ## Description
 
